@@ -4,12 +4,14 @@ RSpec.describe PostRepository do
 
     def reset_posts_table
         seed_sql = File.read('spec/seeds_posts.sql')
-        connection = PG.connect({ host: '127.0.0.1', dbname: 'social_network_test' })
+        connection = PG.connect({ host: '127.0.0.1', dbname: 'social_network_test2' })
         connection.exec(seed_sql)
     end
   
+describe PostRepository do
+        
     before(:each) do 
-      reset_posts_table
+        reset_posts_table
     end
 
     describe "#all" do
@@ -74,4 +76,5 @@ RSpec.describe PostRepository do
             expect(results.length).to eq 0
         end
     end
+end
 end
